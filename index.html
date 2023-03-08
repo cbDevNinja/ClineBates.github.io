@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.18/fullpage.min.css" integrity="sha512-IAZ2BwiunYVeKm/Bd4LbQYmWs3VcIucbpUsi3fSYG6Pbyxq8Jg6Uy1uSa3iBEO1Qzmi+26djbP3fbTaec+jpwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+      <nav>
+        <ul>
+          <li class="active"><a href="#section1">Home</a></li>
+          <li><a href="#section2">Work</a></li>
+          <li><a href="#section3">About</a></li>
+        </ul>
+      </nav>
+
+      <div id="fullpage">
+        <div class="section s1">
+          <div class="header-container">
+            <h1>Cline Bates</h1>
+            <p>A Front-End Developer from Atlanta</p>
+          </div>
+
+        </div>
+        <div class="section s2">
+          <div class="header-container">
+            <h1>My Work</h1>
+          </div>
+
+
+            <div class="slide">
+              <h1>The first slide</h1>
+            </div>
+
+            <div class="slide">
+              <h1>The second slide</h1>
+            </div>
+
+            <div class="slide">
+              <h1>The third slide</h1>
+            </div>
+
+        </div>
+        <div class="section s3">
+          <div class="header-container">
+            <h1>Section 3</h1>
+          </div>
+        </div>
+      </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.18/fullpage.min.js" integrity="sha512-HZ7+ANpcjhHEPLD4PCQdC9+U+Do4775Y8eWuTdX1S8bYJcR+CODugazS06uCY+DL93LAeU/Z+VcWP2yfb6tcGA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script>
+// Get all navigation items
+var navItems = document.querySelectorAll('nav li');
+
+// Loop through all navigation items
+for (var i = 0; i < navItems.length; i++) {
+  // Add event listener to each navigation item
+  navItems[i].addEventListener('click', function() {
+    // Remove active class from all navigation items
+    for (var j = 0; j < navItems.length; j++) {
+      navItems[j].classList.remove('active');
+    }
+    // Add active class to clicked navigation item
+    this.classList.add('active');
+  });
+}
+
+// Initialize fullPage.js
+new fullpage('#fullpage', {
+  anchors: ['section1', 'section2', 'section3'],
+  onLeave: function(origin, destination, direction) {
+    // Remove active class from all navigation items
+    for (var i = 0; i < navItems.length; i++) {
+      navItems[i].classList.remove('active');
+    }
+    // Add active class to navigation item that corresponds to destination
+    var activeNavItem = document.querySelector('nav li a[href="#' + destination.anchor + '"]').parentNode;
+    activeNavItem.classList.add('active');
+  }
+});
+
+
+
+  </script>
+</body>
+</html>
